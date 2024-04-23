@@ -14,23 +14,68 @@ int main() {
     return 0;
 }
 branching lopping:-
-#include <iostream>
-
-int main() {
-    int num = 10;
-    if (num > 0) {
-        cout << "Number is positive." << endl;
-    } else {
-        cout << "Number is non-positive." << sendl;
+#include<iostream>
+using namespace std;
+class largest
+{
+    int a, b, c; // Added semicolon
+    public:
+    void input()
+    {
+        cout<<"enter three numbers"<<endl;
+        cin>>a>>b>>c;
     }
-
-    // Looping with for loop
-    for (int i = 0; i < 5; i++) {
-        cout << "Iteration: " << i << endl;
+    int getlargest()
+    {
+        int y;
+        if(a>b && a>c) // Changed == to >
+            y=a;
+        else if(b>c)
+            y=b;
+        else
+            y=c;
+        return y;
     }
-
+};
+int main()
+{
+    largest d;
+    d.input();
+    int v = d.getlargest(); // Added semicolon
+    cout<<"largest no="<<v<<endl;
     return 0;
 }
+looping gcd:-
+#include<iostream>
+using namespace std;
+class gcd
+{
+    int no1, no2;
+    public:
+    void input()
+    {
+        cout<<"enter two numbers:"<<endl;
+        cin>>no1>>no2;
+    }
+    void findgcd()
+    {
+        int g;
+        for(int i=1;i<=no1;i++)
+        {
+            if(no1%i==0 && no2%i==0)
+                g=i;
+        }
+        cout<<"gcd="<<g<<endl;
+    }
+};
+int main()
+{
+    gcd d; // Changed gcdd to gcd
+    d.input(); // Added () for function call
+    d.findgcd(); // Added () for function call
+    return 0;
+}
+
 pointer:-
 #include <iostream>
 
