@@ -1,0 +1,351 @@
+memeber function:-
+#include <iostream>
+
+class MyClass {
+public:
+    void myMemberFunction() {
+        scout << "This is a member function." << endl;
+    }
+};
+
+int main() {
+    MyClass obj;
+    obj.myMemberFunction();
+    return 0;
+}
+branching lopping:-
+#include <iostream>
+
+int main() {
+    int num = 10;
+    if (num > 0) {
+        cout << "Number is positive." << endl;
+    } else {
+        cout << "Number is non-positive." << sendl;
+    }
+
+    // Looping with for loop
+    for (int i = 0; i < 5; i++) {
+        cout << "Iteration: " << i << endl;
+    }
+
+    return 0;
+}
+pointer:-
+#include <iostream>
+
+int main() {
+    int number = 10;
+    int* pointer;
+
+    pointer = &number; // Assign the address of 'number' to 'pointer'
+
+    std::cout << "Value of number: " << number << std::endl;
+    std::cout << "Address of number: " << &number << std::endl;
+    std::cout << "Value of pointer: " << pointer << std::endl;
+    std::cout << "Value pointed to by pointer: " << *pointer << std::endl;
+
+    return 0;
+}
+1dimension and 2dimenstion:-
+#include <iostream>
+
+int main() {
+    // 1D array
+    int arr1D[5] = {10, 20, 30, 40, 50};
+
+    std::cout << "1D Array elements:" << std::endl;
+    for (int i = 0; i < 5; i++) {
+        std::cout << arr1D[i] << " ";
+    }
+    std::cout << std::endl;
+
+    // 2D array
+    int arr2D[2][3] = {
+        {1, 2, 3},
+        {4, 5, 6}
+    };
+
+    std::cout << "2D Array elements:" << std::endl;
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 3; j++) {
+            std::cout << arr2D[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    return 0;
+}
+scope resolution operator:-
+#include <iostream>
+
+// Global variable
+int x = 10;
+
+int main() {
+    // Local variable
+    int x = 20;
+
+    // Access local variable
+    std::cout << "Local x: " << x << std::endl;
+
+    // Access global variable using scope resolution operator
+    std::cout << "Global x: " << ::x << std::endl;
+
+    return 0;
+}
+
+use public,private ,protected specifier:-
+#include <iostream>
+
+class Example {
+private:
+    int value; // Private member variable
+
+public:
+    // Public member function to set the value
+    void setValue(int val) {
+        value = val;
+    }
+
+    // Public member function to get the value
+    int getValue() {
+        return value;
+    }
+};
+
+int main() {
+    Example obj;
+    
+    // Set the value using the public member function
+    obj.setValue(42);
+    
+    // Get the value using the public member function and print it
+    std::cout << "Value: " << obj.getValue() << std::endl;
+
+    return 0;
+}
+constructor and deconstructor:-
+#include <iostream>
+
+class Example {
+private:
+    int* data;
+
+public:
+    // Default constructor
+    Example() {
+        std::cout << "Default constructor called" << std::endl;
+        data = new int(0); // Allocate memory and initialize to 0
+    }
+
+    // Copy constructor
+    Example(const Example& other) {
+        std::cout << "Copy constructor called" << std::endl;
+        data = new int(*other.data); // Allocate memory and copy value
+    }
+
+    // Destructor
+    ~Example() {
+        std::cout << "Destructor called" << std::endl;
+        delete data; // Free the memory allocated
+    }
+
+    // Getter function to access the data
+    int getData() const {
+        return *data;
+    }
+
+    // Setter function to modify the data
+    void setData(int value) {
+        *data = value;
+    }
+};
+
+int main() {
+    // Create an object using the default constructor
+    Example obj1;
+    std::cout << "Data in obj1: " << obj1.getData() << std::endl;
+
+    // Create a second object using the copy constructor
+    Example obj2 = obj1;
+    std::cout << "Data in obj2: " << obj2.getData() << std::endl;
+
+    // Modify the data in obj2
+    obj2.setData(42);
+    std::cout << "Data in obj2 after modification: " << obj2.getData() << std::endl;
+
+    return 0;
+}
+overloading :-
+#include <iostream>
+
+// Function to add two integers
+int add(int a, int b) {
+    return a + b;
+}
+
+// Function to add three integers
+int add(int a, int b, int c) {
+    return a + b + c;
+}
+
+// Function to add two doubles
+double add(double a, double b) {
+    return a + b;
+}
+
+int main() {
+    // Call the overloaded functions
+    std::cout << "Sum of 5 and 10: " << add(5, 10) << std::endl;
+    std::cout << "Sum of 5, 10, and 15: " << add(5, 10, 15) << std::endl;
+    std::cout << "Sum of 3.5 and 2.5: " << add(3.5, 2.5) << std::endl;
+
+    return 0;
+}
+overriding:-
+#include <iostream>
+
+// Base class
+class Animal {
+public:
+    // Virtual function
+    virtual void makeSound() {
+        std::cout << "Animal makes a sound" << std::endl;
+    }
+};
+
+// Derived class
+class Dog : public Animal {
+public:
+    // Override the makeSound function
+    void makeSound() override {
+        std::cout << "Dog barks" << std::endl;
+    }
+};
+
+// Another derived class
+class Cat : public Animal {
+public:
+    // Override the makeSound function
+    void makeSound() override {
+        std::cout << "Cat meows" << std::endl;
+    }
+};
+
+int main() {
+    // Create objects of the derived classes
+    Animal* animal1 = new Animal();
+    Animal* animal2 = new Dog();
+    Animal* animal3 = new Cat();
+
+    // Call the makeSound function for each object
+    animal1->makeSound(); // Output: "Animal makes a sound"
+    animal2->makeSound(); // Output: "Dog barks"
+    animal3->makeSound(); // Output: "Cat meows"
+
+    delete animal1;
+    delete animal2;
+    delete animal3;
+
+    return 0;
+}
+inhertance derived class constructer:-
+#include <iostream>
+
+// Base class
+class Base {
+public:
+    int baseValue;
+
+    // Base class constructor
+    Base(int value) : baseValue(value) {
+        std::cout << "Base class constructor called with value: " << baseValue << std::endl;
+    }
+};
+
+// Derived class inheriting from Base
+class Derived : public Base {
+public:
+    int derivedValue;
+
+    // Derived class constructor
+    Derived(int baseVal, int derivedVal) : Base(baseVal), derivedValue(derivedVal) {
+        std::cout << "Derived class constructor called with values: " << baseValue << " and " << derivedValue << std::endl;
+    }
+};
+
+int main() {
+    Derived derivedObj(5, 10);
+    return 0;
+}
+single inherttance:-
+#include <iostream>
+class Animal {
+public:
+    void eat() {
+        cout << "Animal eats" << endl;
+    }
+};
+class Dog : public Animal {
+public:
+    void bark() {
+       cout << "Dog barks" << endl;
+    }
+};
+
+int main() {
+    Dog dog;
+    
+    
+    dog.eat();  
+    
+    
+    dog.bark(); 
+    
+    return 0;
+}
+multiple inheritance:-
+#include <iostream>
+
+// Base class 1
+class Animal {
+public:
+    void eat() {
+        std::cout << "Animal eats" << std::endl;
+    }
+};
+
+// Base class 2
+class Pet {
+public:
+    void play() {
+        std::cout << "Pet plays" << std::endl;
+    }
+};
+
+// Derived class inheriting from Animal and Pet
+class Dog : public Animal, public Pet {
+public:
+    void bark() {
+        std::cout << "Dog barks" << std::endl;
+    }
+};
+
+int main() {
+    Dog dog;
+    
+    // Accessing members from base class Animal
+    dog.eat();  // Output: "Animal eats"
+    
+    // Accessing members from base class Pet
+    dog.play(); // Output: "Pet plays"
+    
+    // Accessing members from derived class Dog
+    dog.bark(); // Output: "Dog barks"
+    
+    return 0;
+}
+
+
+
